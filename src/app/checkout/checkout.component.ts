@@ -3,7 +3,7 @@ import { ProductService } from '../services/products.service';
 
 import { Store } from '@ngrx/store';
 import { Cart} from '../state-management/state/cart.state';
-import { ADD_TO_CART, REMOVE_TO_CART } from '../state-management/actions/cart.actions';
+import { REMOVE_TO_CART } from '../state-management/actions/cart.actions';
 import { IProducts } from '../interfaces/products';
 
 @Component({
@@ -17,7 +17,6 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private store: Store<Cart>,
-    private productService: ProductService,
   ) {}
 
   ngOnInit() {
