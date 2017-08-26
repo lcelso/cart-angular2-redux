@@ -1,0 +1,10 @@
+<div>
+  <h3>Catalogo</h3>
+  <ul (click)="addToCart(product)" *ngFor='let product of listProducts'>
+    <app-product-item
+      [title]="product.title"
+      [image]="product.pathImage"
+      [price]="product.price"
+      [installments]="product.installments"></app-product-item>
+  </ul>
+</div>

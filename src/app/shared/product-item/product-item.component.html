@@ -1,0 +1,7 @@
+<li>{{ title }}</li>
+<li><img src="../assets/{{ image }}"/>
+<li>{{ price | currency: 'BRL':true:'1.2-2'}}</li>
+<li>{{ installments }}x {{ price / installments | currency: 'BRL':true:'1.2-2' }}</li>
+<li *ngIf="amount">quantidade {{ amount }}</li>
+<li *ngIf="amount">Subtotal: {{ price * amount | currency: 'BRL':true:'1.2-2'}}</li>
+<li *ngIf="removeCartItem" (click)="onClick($event)">X remover</li>
