@@ -1,0 +1,12 @@
+<div class="container-bag">
+  <ul *ngFor='let product of cartListItems'>
+    <app-product-item
+      (onClickChange)="onRemoveCartItem(product.products)"
+      [title]="product.products.title"
+      [image]="product.products.pathImageThumb"
+      [price]="product.products.price"
+      [installments]="product.products.installments"
+      [removeCartItem]="true"
+      [amount]="product.amount"></app-product-item>
+  </ul>
+</div>

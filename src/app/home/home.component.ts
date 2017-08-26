@@ -14,6 +14,7 @@ import { ADD_TO_CART } from '../state-management/actions/cart.actions';
 export class HomeComponent implements OnInit {
 
   listProducts: IProducts[];
+  cartListItems: Array<IProducts>;
 
   constructor(
     private store: Store<Cart>,
@@ -22,6 +23,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.store.select('cartReducer')
+      .subscribe((state: any) => {
+        this.cartListItems = state.products;
+      });
+
     this.productService.getProducts()
       .subscribe(
         (products: any) => this.listProducts = products.products
