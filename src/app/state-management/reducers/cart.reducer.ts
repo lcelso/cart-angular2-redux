@@ -1,7 +1,11 @@
 import { ActionReducer, Action } from '@ngrx/store';
 
 import { Cart, intitialState } from '../state/cart.state';
-import { ADD_TO_CART, REMOVE_TO_CART } from '../actions/cart.actions';
+import {
+  ADD_TO_CART,
+  REMOVE_TO_CART,
+  TOTAL_CART
+} from '../actions/cart.actions';
 
 export function cartReducer (state = intitialState, action: Action) {
   let cartItem;
@@ -16,11 +20,13 @@ export function cartReducer (state = intitialState, action: Action) {
       });
 
       if (cartFilter.length < 1) {
-        action.payload.amount = 1;
+        action.payload.products.amount = 1;
+        action.payload.products.subtotal = action.payload.products.price;
         cartItem.push(action.payload);
       } else {
         const index = cartItem.findIndex(cart => cart.products.id === action.payload.products.id);
-        cartItem[index].amount++;
+        cartItem[index].products.amount++;
+        cartItem[index].products.subtotal = cartItem[index].products.amount * cartItem[index].products.price;
       }
 
       localStorage.setItem('products', JSON.stringify(cartItem));
@@ -33,10 +39,12 @@ export function cartReducer (state = intitialState, action: Action) {
         return (cart.products.id !== action.payload.products.id);
       });
 
-      // localStorage.setItem('products', JSON.stringify(cartFilter));
-
+      localStorage.setItem('products', JSON.stringify(cartFilter));
       return {products: cartFilter};
+    }
 
+    case TOTAL_CART: {
+      return console.log(cartItem);
     }
 
     default:

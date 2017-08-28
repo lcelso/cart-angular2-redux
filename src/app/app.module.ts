@@ -13,6 +13,7 @@ import { CheckoutModule } from './checkout/checkout.module';
 import { SharedModule } from './shared/shared.module';
 
 import { ProductService } from './services/products.service';
+import { CartService } from './services/cart.service';
 import { cartReducer } from './state-management/reducers/cart.reducer';
 
 @NgModule({
@@ -32,6 +33,7 @@ import { cartReducer } from './state-management/reducers/cart.reducer';
   ],
   providers: [
     ProductService,
+    CartService,
   ],
   bootstrap: [AppComponent]
 })

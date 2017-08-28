@@ -1,16 +1,22 @@
 <div>
   <h3>Carrinho</h3>
-  <ul *ngFor='let product of cartListItems'>
-    <app-product-item
-      (onClickChange)="onRemoveCartItem(product.products)"
-      [title]="product.products.title"
-      [image]="product.products.pathImageThumb"
-      [price]="product.products.price"
-      [installments]="product.products.installments"
-      [removeCartItem]="true"
-      [amount]="product.amount"></app-product-item>
-  </ul>
-  <p>Total:  </p>
+  <div *ngIf="cartListItems.length > 0">
+    <ul *ngFor='let itemProduct of cartListItems'>
+      <app-product-item
+        (onClickChange)="onRemoveCartItem(itemProduct.products)"
+        [title]="itemProduct.products.title"
+        [image]="itemProduct.products.pathImageThumb"
+        [price]="itemProduct.products.price"
+        [installments]="itemProduct.products.installments"
+        [removeCartItem]="true"
+        [amount]="itemProduct.products.amount"
+        [subtotal]="itemProduct.products.subtotal"></app-product-item>
+    </ul>
+    <app-total [cartListItems]="cartListItems"></app-total>
+  </div>
+  <div *ngIf="cartListItems.length === 0">
+    <p>Carrinho vazio <a [routerLink]="['/']">Voltar a comprar</a></p>
+  </div>
 </div>
 
 

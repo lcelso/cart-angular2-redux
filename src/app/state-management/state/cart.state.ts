@@ -3,6 +3,6 @@ export interface Cart {
 }
 
 export const intitialState: Cart = {
-  // products: JSON.parse(localStorage.getItem('products')) || []
-  products: []
+  products: JSON.parse(localStorage.getItem('products')) || []
+  // products: []
 };

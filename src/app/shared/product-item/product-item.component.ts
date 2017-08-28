@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.css']
+  styleUrls: ['./product-item.component.scss']
 })
 export class ProductItemComponent implements OnInit {
 
@@ -16,6 +16,8 @@ export class ProductItemComponent implements OnInit {
   @Input() installments: number;
 
   @Input() amount?: number;
+
+  @Input() subtotal?: number;
 
   @Input() removeCartItem: false;
 

@@ -11,4 +11,5 @@ export interface IProduct {
   isFreeShipping: boolean;
   pathImage: string;
   pathImageThumb: string;
+  subtotal: number;
 }

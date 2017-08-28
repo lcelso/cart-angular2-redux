@@ -4,17 +4,18 @@ import { IProducts } from '../interfaces/products';
 
 import { Store } from '@ngrx/store';
 import { Cart } from '../state-management/state/cart.state';
-import { ADD_TO_CART } from '../state-management/actions/cart.actions';
+import { ADD_TO_CART, TOTAL_CART } from '../state-management/actions/cart.actions';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
   listProducts: IProducts[];
   cartListItems: Array<IProducts>;
+
+  amountTotal: number;
 
   constructor(
     private store: Store<Cart>,
@@ -23,18 +24,17 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.select('cartReducer')
-      .subscribe((state: any) => {
-        this.cartListItems = state.products;
-      });
+    this.store.select('cartReducer').subscribe((state: any) => {
+      this.cartListItems = state.products;
+    });
 
-    this.productService.getProducts()
-      .subscribe(
-        (products: any) => this.listProducts = products.products
-      );
+    this.productService.getProducts().subscribe(
+      (products: any) => this.listProducts = products.products
+    );
   }
 
   addToCart(payload) {
+    console.log(payload);
     this.store.dispatch({ type: ADD_TO_CART, payload: { products: payload } });
   }
 
