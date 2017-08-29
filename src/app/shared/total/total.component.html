@@ -1,4 +1,7 @@
 <p>
-  Total:  {{ total | currency: 'BRL':true:'1.2-2' }}
+  <span class="title-total">Total:</span>
+  <span class="value-total"> {{ total | currency: 'BRL':true:'1.2-2' }}</span>
+</p>
+<p>
   <span class="installments">ou em até {{ installments }}X {{ total / installments | currency: 'BRL':true:'1.2-2' }}</span>
 </p>

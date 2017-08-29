@@ -1,12 +1,11 @@
-<div>
-  <h3>Catalogo</h3>
-  <ul (click)="addToCart(product)" *ngFor='let product of listProducts'>
-    <app-product-item
-      [title]="product.title"
-      [image]="product.pathImage"
-      [price]="product.price"
-      [installments]="product.installments"></app-product-item>
-  </ul>
-
-  <app-bag [cartListItems]="cartListItems"></app-bag>
-</div>
+<ul class="list-products">
+  <app-product-item
+    (onClickChange)="addToCart(product)"
+    (onClickOneChange)="oneClick(product)"
+    *ngFor='let product of listProducts'
+    [title]="product.title"
+    [image]="product.pathImage"
+    [price]="product.price"
+    [installments]="product.installments"></app-product-item>
+</ul>
+<app-bag [cartListItems]="cartListItems"></app-bag>

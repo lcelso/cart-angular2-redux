@@ -21,19 +21,27 @@ export class ProductItemComponent implements OnInit {
 
   @Input() removeCartItem: false;
 
+  @Input() activeBag = false;
+
+  @Input() activeCheckout = false;
+
   @Output() onClickChange = new EventEmitter();
+
+  @Output() onClickOneChange = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  removeToCart($event) {
-    console.log($event);
-  }
-
   onClick($event) {
     this.onClickChange.emit({
+      $event: $event
+    });
+  }
+
+  onClickOne($event) {
+    this.onClickOneChange.emit({
       $event: $event
     });
   }

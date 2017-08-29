@@ -1,7 +1,27 @@
-<li>{{ title }}</li>
-<li><img src="../assets/products/{{ image }}"/>
-<li>{{ price | currency: 'BRL':true:'1.2-2'}}</li>
-<li>{{ installments }}x {{ price / installments | currency: 'BRL':true:'1.2-2' }}</li>
-<li *ngIf="amount">quantidade {{ amount }}</li>
-<li *ngIf="amount">Subtotal: {{ subtotal | currency: 'BRL':true:'1.2-2'}}</li>
-<li *ngIf="removeCartItem" (click)="onClick($event)">X remover</li>
+<li class="product"
+  [attr.bag]="activeBag"
+  [attr.checkout]="activeCheckout">
+  <div (click)="onClick($event)">
+    <img
+      class="product__image"
+      alt="{{ alt }}"
+      title="{{ title }}"
+      src="../assets/products/{{ image }}"/>
+    <div class="product__details-product">
+      <p class="product__title">{{ title }}</p>
+      <p class="product__amout" *ngIf="amount">Quantidade {{ amount }}</p>
+    </div>
+    <div class="product__details-price">
+      <p class="product__price">
+        {{ price | currency: 'BRL':true:'1.2-2'}}
+      </p>
+      <p class="product__installments">
+        {{ installments }}x {{ price / installments | currency: 'BRL':true:'1.2-2' }}
+      </p>
+      <p class="product__subtotal" *ngIf="amount">Subtotal: {{ subtotal | currency: 'BRL':true:'1.2-2'}}</p>
+    </div>
+    <p class="product__button-remove" *ngIf="removeCartItem">X</p>
+  </div>
+  <p (click)="onClickOne($event)" class="button-clik-one" *ngIf="!removeCartItem">Comprar com 1 clique</p>
+</li>
+

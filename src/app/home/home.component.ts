@@ -34,8 +34,12 @@ export class HomeComponent implements OnInit {
   }
 
   addToCart(payload) {
-    console.log(payload);
     this.store.dispatch({ type: ADD_TO_CART, payload: { products: payload } });
+  }
+
+  oneClick(payload) {
+    this.addToCart(payload);
+    setTimeout(() => document.querySelector('.bag').classList.add('is-open'), 500);
   }
 
 }

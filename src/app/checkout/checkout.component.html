@@ -1,9 +1,9 @@
-<div>
-  <h3>Carrinho</h3>
+<div class="checkout-container">
   <div *ngIf="cartListItems.length > 0">
     <ul *ngFor='let itemProduct of cartListItems'>
       <app-product-item
         (onClickChange)="onRemoveCartItem(itemProduct.products)"
+        activeCheckout="true"
         [title]="itemProduct.products.title"
         [image]="itemProduct.products.pathImageThumb"
         [price]="itemProduct.products.price"
