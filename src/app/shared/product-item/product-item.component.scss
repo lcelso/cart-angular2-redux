@@ -8,6 +8,8 @@
     cursor: pointer;
 
     .product__details-product {
+      min-height: 69px;
+
       .product__title {
         font-size: 16px;
         text-align: center;
@@ -20,6 +22,15 @@
       .product__amout {
         font-size: 11px;
         color: #919193;
+      }
+
+      .product__is-free {
+        background-color: #c00;
+        padding: 0 5px;
+        width: auto;
+        display: inline-block;
+        color: #FFF;
+        font-size: 11px;
       }
     }
 

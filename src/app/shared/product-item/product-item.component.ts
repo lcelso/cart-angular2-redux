@@ -17,6 +17,8 @@ export class ProductItemComponent implements OnInit {
 
   @Input() amount?: number;
 
+  @Input() isFreeShipping?: boolean;
+
   @Input() subtotal?: number;
 
   @Input() removeCartItem: false;

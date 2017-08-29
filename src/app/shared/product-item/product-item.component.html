@@ -10,6 +10,7 @@
     <div class="product__details-product">
       <p class="product__title">{{ title }}</p>
       <p class="product__amout" *ngIf="amount">Quantidade {{ amount }}</p>
+      <p *ngIf="isFreeShipping" class="product__is-free">Frete grátis</p>
     </div>
     <div class="product__details-price">
       <p class="product__price">
